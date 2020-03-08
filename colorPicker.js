@@ -1,6 +1,6 @@
 let rgb = new RGB(0, 0, 0);
 let xyz = new XYZ(0, 0, 0);
-let lab = new LAB(53, 127, 67);
+let lab = new LAB(0, 0, 0);
 
 function palette(event) {
     rgb = hexToRgb(event.target.value);
@@ -148,13 +148,18 @@ var ColorConverter = {
 
     _RGBtoXYZ: function (RGB) {
 
-        r = RGB.r / 255;
-        g = RGB.g / 255;
-        b = RGB.b / 255;
+        function F1(x) {
+            if (x < 0.04045) {
+                return x / 12.92;
+            }
+            else {
+                return Math.pow((x + 0.055) / 1.055, 2.4);
+            }
+        }
 
-        var Rn = F1(r/255)*100;
-        var Gn = F1(g/255)*100;
-        var Bn = F1(b/255)*100;
+        var Rn = F1(RGB.r/255)*100;
+        var Gn = F1(RGB.g/255)*100;
+        var Bn = F1(RGB.b/255)*100;
 
         var x = 0.412453*Rn + 0.357580*Gn + 0.180423*Bn;
         var y = 0.212671*Rn + 0.715160*Gn + 0.072169*Bn;
@@ -165,7 +170,7 @@ var ColorConverter = {
 
     _XYZtoRGB: function (XYZ) {
                 
-        function F2(x) {
+        function F1(x) {
             if(x >= 0.0031308) {
                 return 1.055*Math.pow(x, 1/2.4) - 0.055;
             }
@@ -174,24 +179,24 @@ var ColorConverter = {
             }
         }
 
-        var x = XYZ.x;
-        var y = XYZ.y;
-        var z = XYZ.z;
+        var x = XYZ.x/100;
+        var y = XYZ.y/100;
+        var z = XYZ.z/100;
 
         var Rn = 3.2406*x - 1.5372*y - 0.4986*z;
         var Gn = -0.9689*x + 1.8758*y + 0.0415*z;
         var Bn = 0.0557*x - 0.2040*y + 1.0570*z;
 
-        var r = F2(Rn)*255;
-        var g = F2(Gn)*255;
-        var b = F2(Bn)*255;
+        var r = F1(Rn)*255;
+        var g = F1(Gn)*255;
+        var b = F1(Bn)*255;
 
         return new RGB(r, g, b);
     },
 
     _LABtoXYZ: function(LAB) {
 
-        function F4(x) {
+        function F2(x) {
             var r = Math.pow(x, 3);
             if (r < 0.008856) {
                 return (x - 16 / 116) / 7.787;
@@ -201,9 +206,9 @@ var ColorConverter = {
             }
         }
 
-        var y = F1((LAB.l + 16) / 116) * 95.047;
-        var x = F1(LAB.a / 500 + (LAB.l + 16) / 116) * 100;
-        var z = F1((LAB.l + 16) / 116 - LAB.d / 200) * 108.883;
+        var y = F2((LAB.l + 16) / 116) * 95.047;
+        var x = F2(LAB.a / 500 + (LAB.l + 16) / 116) * 100;
+        var z = F2((LAB.l + 16) / 116 - LAB.d / 200) * 108.883;
 
         return new XYZ(x, y, z);
     },
@@ -211,11 +216,11 @@ var ColorConverter = {
     _XYZtoLAB: function(XYZ) {
 
         function F3(x) {
-            if(x >= 0.008856) {
-                return Math.cbrt(x);
+            if (x < 0.008856) {
+                return 7.787 * x + 16 / 116;
             }
             else {
-                return 7.787*x + 16/116;
+                return Math.pow(x, 1 / 3);
             }
         }
 
@@ -290,10 +295,10 @@ document.onmousedown = function(e) {
       var coords = target.getBoundingClientRect();
 
       var left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
-      if (left < 0) left = 0; // не вылезать за левую границу окна
+      if (left < 0) left = 0;
 
       var top = coords.top - tooltipElem.offsetHeight - 5;
-      if (top < 0) { // не вылезать за верхнюю границу окна
+      if (top < 0) {
         top = coords.top + target.offsetHeight + 5;
       }
 

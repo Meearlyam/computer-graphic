@@ -1,12 +1,6 @@
 body {
-    background-color: #dddddd;
+    background-color: #сссссс;
 } 
-
-#footer {
-    position: fixed;
-    left: auto; bottom: 0; right: 50px;
-    text-align: center;
-}
 
 #font {
     font-weight: bold;
@@ -15,8 +9,6 @@ body {
 .tooltip {
       position: fixed;
       padding: 10px 20px;
-      /* красивости... */
-
       border: 1px solid #b3c9ce;
       border-radius: 4px;
       text-align: center;
@@ -34,14 +26,17 @@ body {
 
 .schemecontainer{
     display: inline-table;
-    width: 30%;
+    width: 25%;
     margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .slider {
     -webkit-appearance: none;
     width: 100%;
     height: 5px;
+    margin-top: 10px;
     border-radius: 5px;   
     background: #d3d3d3;
     outline: none;
@@ -53,10 +48,10 @@ body {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 11px;
+    width: 9px;
     height: 18px;
     border-radius: 40%; 
-    background: #000;
+    background: #f90;
     cursor: pointer;
 }
 
@@ -69,6 +64,7 @@ body {
 }
 
 .field {
-    top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     width: 70px;
 }
