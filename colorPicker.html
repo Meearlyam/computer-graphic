@@ -1,0 +1,105 @@
+<html>
+<head>
+	<title>Color-model converter</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="colorPicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="colorPicker.css">
+</head>
+<body>
+<h1 align="center">Color-model converter</h1>
+
+<div align="center">
+	<div class="schemecontainer">
+	<h3>RGB</h3>
+    <div class="slidecontainer">
+        <font color="red">Red</font><input type="range" min="0" max="255" value="255" class="slider" id="R"
+                                       onchange="sliderMoveRGB('R')"
+                                       oninput="sliderMoveRGB('R')">
+    </div>
+    <div  class="field">
+    	<input type="number" min="0" max="255" value="255" class="field" id="RF">
+    </div>
+    <div class="slidecontainer">
+        <font color="green">Green</font><input type="range" min="0" max="255" value="0" class="slider" id="G"
+                                       onchange="sliderMoveRGB('G')"
+                                       oninput="sliderMoveRGB('G')">
+    </div>
+    <div class="field">
+    	<input type="number" min="0" max="255" value="0" class="field" id="GF">
+    </div>
+    <div class="slidecontainer">
+        <font color="blue">Blue</font><input type="range" min="0" max="255" value="0" class="slider" id="B"
+                                       onchange="sliderMoveRGB('B')"
+                                       oninput="sliderMoveRGB('B')">
+    </div>
+    <div class="field">
+    	<input type="number" min="0" max="255" value="0" class="field" id="BF">
+    </div>
+</div>
+
+<div class="schemecontainer">
+	<h3>XYZ</h3>
+    <div class="slidecontainer">
+        <font color="black">X</font><input type="range" min="0" max="100" value="0" class="slider" id="X"
+                                       onchange="sliderMoveXYZ('X')"
+                                       oninput="sliderMoveXYZ('X')">
+    </div>
+    <div class="field">
+    	<input type="number" min="0" max="100" value="0" class="field" id="XF">
+    </div>
+    <div class="slidecontainer">
+        <font color="black">Y</font><input type="range" min="0" max="100" value="100" class="slider" id="Y"
+                                       onchange="sliderMoveXYZ('Y')"
+                                       oninput="sliderMoveXYZ('Y')">
+    </div>
+    <div class="field">
+    	<input type="number" min="0" max="100" value="100" class="field" id="YF">
+    </div>
+    <div class="slidecontainer">
+        <font color="black">Z</font><input type="range" min="0" max="100" value="100" class="slider" id="Z"
+                                       onchange="sliderMoveXYZ('Z')"
+                                       oninput="sliderMoveXYZ('Z')">
+    </div>
+    <div class="field">
+    	<input type="number" min="0" max="100" value="100" class="field" id="ZF">
+    </div>
+</div>
+
+<div class="schemecontainer">
+	<h3>CIE 1976 L*a*b*</h3>
+    <div class="slidecontainer">
+        <font color="black">L</font><input type="range" min="0" max="100" value="53" class="slider" id="L"
+                                       onchange="sliderMoveLAB('L')"
+                                       oninput="sliderMoveLAB('L')">
+    </div>
+    <div class="field">
+    	<input type="number" min="0" max="100" value="53" class="field" id="LF">
+    </div>
+    <div class="slidecontainer">
+        <font color="black">a</font><input type="range" min="-128" max="127" value="80" class="slider" id="A"
+                                       onchange="sliderMoveLAB('A')"
+                                       oninput="sliderMoveLAB('A')">
+    </div>
+    <div class="field">
+    	<input type="number" min="-128" max="127" value="127" class="field" id="AF">
+    </div>
+    <div class="slidecontainer">
+        <font color="black">b</font><input type="range" min="-128" max="127" value="67" class="slider" id="D"
+                                       onchange="sliderMoveLAB('D')"
+                                       oninput="sliderMoveLAB('D')">
+    </div>
+    <div class="field">
+    	<input type="number" min="-128" max="127" value="67" class="field" id="DF">
+    </div>
+</div>
+</div>
+
+<div>
+    <input type="color" value="#FF0000" id="colorWell" oninput="palette(event)" onchange="palette(event)"
+           style="width:100%;height:20%;">
+</div>
+
+<div id="footer">&copy; Vera Shavela, 2020</div>
+</body>
+</html>
