@@ -27,6 +27,7 @@ body {
 .schemecontainer{
     display: inline-table;
     width: 25%;
+    margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -51,7 +52,7 @@ body {
     width: 9px;
     height: 18px;
     border-radius: 40%; 
-    background: #f90;
+    background: #aaa;
     cursor: pointer;
 }
 

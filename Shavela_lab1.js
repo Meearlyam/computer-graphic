@@ -19,6 +19,10 @@ function sliderMoveLAB(s) {
     solveAll(lab, s);
 }
 
+function setLoggerValue(message) {
+    $('#logger').val(message);
+}
+
 function getVals(s) {
     return parseInt($('#' + s).val());
 }
@@ -48,24 +52,30 @@ function correctSliders() {
 }
 
 function RGB(r, g, b) {
-    if (r <= 0) {
+    if (r < 0) {
         r = 0;
+        setLoggerValue('R was less than 0 so have been rounded.');
     }
-    if (g <= 0) {
+    if (g < 0) {
         g = 0;
+        setLoggerValue('G was less than 0 so have been rounded.');
     }
-    if (b <= 0) {
+    if (b < 0) {
         b = 0;
+        setLoggerValue('B was less than 0 so have been rounded.');
     }
 
     if (r > 255) {
         r = 255;
+        setLoggerValue('R was more than 255 so have been rounded.');
     }
     if (g > 255) {
         g = 255;
+        setLoggerValue('G was more than 255 so have been rounded.');
     }
     if (b > 255) {
         b = 255;
+        setLoggerValue('B was more than 255 so have been rounded.');
     }
 
     this.r = Math.round(r);
@@ -74,24 +84,30 @@ function RGB(r, g, b) {
 }
 
 function XYZ(x, y, z) {
-    if (x <= 0) {
+    if (x < 0) {
         x = 0;
+        setLoggerValue('X was less than 0 so have been rounded.');
     }
-    if (y <= 0) {
+    if (y < 0) {
         y = 0;
+        setLoggerValue('Y was less than 0 so have been rounded.');
     }
-    if (z <= 0) {
+    if (z < 0) {
         z = 0;
+        setLoggerValue('Z was less than 0 so have been rounded.');
     }
 
     if (x > 100) {
         x = 100;
+        setLoggerValue('X was more than 100 so have been rounded.');
     }
     if (y > 100) {
         y = 100;
+        setLoggerValue('Y was more than 100 so have been rounded.')
     }
     if (z > 100) {
         z = 100;
+        setLoggerValue('Z was more than 100 so have been rounded.')
     }
 
     this.x = Math.round(x);
@@ -100,24 +116,30 @@ function XYZ(x, y, z) {
 }
 
 function LAB(l, a, d) {
-    if (l <= 0) {
+    if (l < 0) {
         l = 0;
+        setLoggerValue('L was less than 0 so have been rounded.');
     }
-    if (a <= -128) {
+    if (a < -128) {
         a = -128;
+        setLoggerValue('a was less than -128 so have been rounded.');
     }
-    if (d <= -128) {
+    if (d < -128) {
         d = -128;
+        setLoggerValue('b was less than -128 so have been rounded.');
     }
 
     if (l > 100) {
         l = 100;
+        setLoggerValue('L was more than 100 so have been rounded.')
     }
     if (a > 127) {
         a = 127;
+        setLoggerValue('a was more than 127 so have been rounded.')
     }
     if (d > 127) {
         d = 127;
+        setLoggerValue('b was more than 127 so have been rounded.')
     }
     
 

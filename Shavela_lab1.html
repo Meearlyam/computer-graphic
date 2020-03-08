@@ -1,13 +1,13 @@
 <html>
 <head>
-	<title>Color-model converter</title>
+	<title>COLOR-MODELS</title>
     <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="colorPicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="colorPicker.css">
+    <script type="text/javascript" src="Shavela_lab1.js"></script>
+    <link rel="stylesheet" type="text/css" href="Shavela_lab1.css">
 </head>
 <body>
-<h1 align="center">Color-model converter</h1>
+<h1 align="center">COLOR-MODELS</h1>
 
 <div align="center">
 	<div class="schemecontainer">
@@ -97,7 +97,11 @@
 
 <div>
     <input type="color" value="#000000" id="colorWell" oninput="palette(event)" onchange="palette(event)"
-           style="width:50%;height:30%;margin-left:25%;margin-right:25%;">
+           style="width:50%;height:30%;margin-left:25%;margin-right:25%;margin-top:2%;">
+</div>
+
+<div>
+  <input type="text" value="Log to show errors" id="logger" style="width:40%;margin-left:30%;margin-right:30%;margin-top:3%;">
 </div>
 
 </body>
